@@ -1,5 +1,7 @@
 package ch.hslu.demo;
 
+import java.util.ArrayList;
+
 public class Main {
 
 	
@@ -9,7 +11,16 @@ public class Main {
 		   Temperature temperature = new Temperature();
 		   System.out.println(temperature.aggregateState(element1));
 		   
-		
+		    ArrayList<String> cars = new ArrayList<String>();
+		    cars.add("Volvo");
+		    cars.add("BMW");
+		    cars.add("Ford");
+		    cars.add("Mazda");
+		    System.out.println(cars);
+		    
+		    for (String i : cars) {
+		        System.out.println(i);
+		      }
 			
 			//aggregateState("Hg");
 		}
