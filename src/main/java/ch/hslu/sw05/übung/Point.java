@@ -1,4 +1,4 @@
-package ch.hslu.sw06.übung;
+package ch.hslu.sw05.übung;
 
 import java.util.Objects;
 
