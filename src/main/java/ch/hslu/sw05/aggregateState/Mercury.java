@@ -6,6 +6,11 @@ public class Mercury extends Element{
 		super( -38.8344f, 356.73f);
 	}
 	
+	public String toString() {
+		return super.toString() + ". -> Hinweis: GIFTIG";
+		
+	}
+	
 	
 	
 }

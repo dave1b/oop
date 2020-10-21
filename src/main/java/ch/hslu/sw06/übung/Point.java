@@ -1,4 +1,4 @@
-package ch.hslu.sw05.übung;
+package ch.hslu.sw06.übung;
 
 import java.util.Objects;
 
@@ -12,7 +12,7 @@ public final class Point {
 	 * Punkt keinem Quadrant zugeordnet.
 	 */
 	private static final int NO_QUADRANT = 0;
-
+	
 	/**
 	 * Quadrant 1. Positiv x, Positiv y.
 	 */
@@ -35,6 +35,12 @@ public final class Point {
 
 	private int x;
 	private int y;
+	
+	private double winkel;
+	private double betrag;
+	
+	private double xPolar;
+	private double yPolar;
 
 	/**
 	 * Konstruktor für Punkt mit Koordinaten.
@@ -54,9 +60,25 @@ public final class Point {
 	 * 
 	 */
 	public Point(Point point) {
-		this.x = point.getX();
-		this.y = point.getY();
+		this(point.getX(),point.getY());
 		}
+	
+	
+	public Point(double betrag, double winkel) {
+		this.betrag = betrag;
+		this.winkel = Math.toRadians(winkel);;
+	}
+	
+	public double getXByPolar() {
+		System.out.println(Math.cos(winkel));
+		return this.xPolar = this.betrag * (Math.cos(this.winkel));
+	}
+	
+	public double getYByPolar() {
+		return this.yPolar = this.betrag * Math.sin(this.winkel);
+	}
+	
+	
 
 	/**
 	 * Liefert den Quadranten in welchem der Punkt liegt. Liegen die Koordinaten auf
