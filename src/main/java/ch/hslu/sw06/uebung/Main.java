@@ -1,4 +1,4 @@
-package ch.hslu.sw06.übung;
+package ch.hslu.sw06.uebung;
 
 public class Main {
 
