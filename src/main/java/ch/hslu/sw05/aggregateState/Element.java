@@ -18,6 +18,8 @@ public abstract class Element {
 	private float boilingPoint;
 	
 	
+	private float temp;
+	
 	
 	protected Element(float meltingPoint, float boilingPoint) {
 		this.meltingPoint = meltingPoint;
@@ -30,6 +32,7 @@ public abstract class Element {
 	 * 
 	 */
 	public int getState(float temp) {
+		this.temp = temp;
 		if(temp < meltingPoint) {
 			return 1;
 		} else if(temp > boilingPoint) {
@@ -40,6 +43,28 @@ public abstract class Element {
 		
 	}
 	
+	/**
+	 * Gives back a String which describes the aggregate state by the given temp.
+	 * @return String
+	 */
+	private String getState() {
+		switch(getState(temp)) {
+			case 1:
+				return "liquid";
+			case 2:
+				return "solid";
+			case 3:
+				return "gaseous";
+			default:
+				return "Error";			
+		}			
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "The aggregate stae is: " + getState();
+	}
 	
 	
 	

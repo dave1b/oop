@@ -8,10 +8,12 @@ public class Square extends Shape {
 		this.width = width;
 	}
 
+	@Override
 	public int getPerimeter() {
 		return width;
 	}
 
+	@Override
 	public int getArea() {
 		return (width * width);
 	}

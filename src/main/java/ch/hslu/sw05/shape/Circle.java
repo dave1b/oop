@@ -17,10 +17,12 @@ public class Circle extends Shape {
 		return this.diameter;
 	}
 	
+	@Override
 	public int getPerimeter() {
 		return (this.diameter/2*2*3);
 	}
 	
+	@Override
 	public int getArea() {
 		return(this.diameter/2 * this.diameter/2 * 3);
 	}
