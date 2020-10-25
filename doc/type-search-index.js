@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ch.hslu.sw05.aggregateState","l":"Element"},{"p":"ch.hslu.sw05.aggregateState","l":"Lead"},{"p":"ch.hslu.sw05.aggregateState","l":"Main"},{"p":"ch.hslu.sw05.aggregateState","l":"Mercury"},{"p":"ch.hslu.sw05.aggregateState","l":"Nitrogen"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ch.hslu.sw06.exercise","l":"Main"},{"p":"ch.hslu.sw06.exercise","l":"Point"}]
