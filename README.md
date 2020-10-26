@@ -10,19 +10,6 @@ Build und definiert die dafür notwendige, standardisierte Verzeichnisstruktur.
 Die jeweils aktuelle Version steht auf [SWITCHdrive](https://drive.switch.ch/) zur Verfügung:
 https://drive.switch.ch/index.php/s/nz0UdWDlSQ9ogDX?path=%2F15_maven_template
 
-## Verwendung
-Das Projekt kann einfach kopiert und umbenannt werden. In NetBeans kann es 
-**direkt** geoeffnet werden, in Eclipse und IntelliJ IDEA ist ein **Import** des
-Projektes notwendig.
-
-Nach dem Kopieren in ein neues Verzeichnis empfehlen wir, den Namen
-des Verzeichnisses, den Namen des Projektes in der IDE sowie die 
-`ArtifactID` und `Name` (zwei Elemente im `pom.xml`) **synchron** zu halten.
-In NetBeans erreichen Sie das durch ein einfaches "Rename"-Refactoring. 
-Sie koennen es aber auch direkt mit einem Texteditor (z.B. notepad) erledigen.
-
-Sobald Sie eigene Klassen und Testfaelle ergaenzt haben, sollten Sie die
-fuer Demozwecke enthaltenen Demo-Klassen entfernen.
 
 ## Enhaltene Libraries (Dependencies)
 * JUnit 5 - https://junit.org/junit5/
