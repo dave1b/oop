@@ -2,6 +2,7 @@ package ch.hslu.sw06.JUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.Before;
 import org.junit.jupiter.api.AfterAll;
 //import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -11,11 +12,22 @@ import org.junit.jupiter.api.Test;
 
 class VariablenTest extends Variablen {
 
+	
+//	 public Variablen var2;
+//	
+//	
+//	@BeforeAll
+//	@Disabled
+//	public void setUp() {
+//		var2 = new Variablen();
+//		Variablen var2 = new Variablen();
+//	}
+	
 	@Test
 	void testmax() {
 		Variablen var = new Variablen();
 		assertEquals(5, var.max(3,4,5));
-	}
+	} 
 	
 	
 	@Test
@@ -58,6 +70,11 @@ class VariablenTest extends Variablen {
 		assertEquals(-4, var.max(-5,-4,-5));
 	}
 	
+	@Test
+	@Disabled("Wiederholung")
+	void testmax8() {
+		assertEquals(5, var2.max(5,4,5), 1);
+	}
 	
 
 	
