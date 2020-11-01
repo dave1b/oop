@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.Warning;
+
 class ElementTest {
 
 	static Nitrogen nitrogen1;
@@ -29,5 +32,12 @@ class ElementTest {
 		assertEquals(true,nitrogen1.equals(mercury1));
 	}
 
-
+	@Test
+	void testEqualsContract() {
+		EqualsVerifier.forClass(Element.class)
+		.suppress(Warning.NONFINAL_FIELDS)
+		.withIgnoredFields("boilingPoint")
+		.suppress(Warning.STRICT_INHERITANCE)
+		.verify();
+	}
 }

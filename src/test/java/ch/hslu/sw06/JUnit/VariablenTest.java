@@ -70,11 +70,7 @@ class VariablenTest extends Variablen {
 		assertEquals(-4, var.max(-5,-4,-5));
 	}
 	
-	@Test
-	@Disabled("Wiederholung")
-	void testmax8() {
-		assertEquals(5, var2.max(5,4,5), 1);
-	}
+	
 	
 
 	

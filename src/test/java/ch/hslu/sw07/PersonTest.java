@@ -87,23 +87,14 @@ public class PersonTest {
 	}
 	
 	@Test
-	@BeforeAll
-	static void testStart() {
-		System.out.println("Tests started.");
+	public void testCompareTo()  {
+		Person per = new Person("Brunner", "Dave", 1998);
+		Person per2 = new Person("Brunner", "Dave", 1999);
+		assertEquals(-1, per.compareTo(per2));
 	}
 	
-	@Test
-	@AfterAll
-	static void testEnd() {
-		System.out.println("Tests ended.");
-	}
+	
 
-	@Test
-	@BeforeEach
-	void testBeforeEach() {
-		counter++;
-		System.out.println(counter);
-	}
 	
 	
 	@Test
@@ -112,12 +103,30 @@ public class PersonTest {
 	}
 
 	@Test
-	@Disabled
-	void testEqualsContract2() {
-		EqualsVerifier.forClass(Person.class).verify();
-	}	
+	@BeforeAll
+	static void testStart() {
+		System.out.println("Tests started.");
+	}
+
+	@Test
+	@BeforeEach
+	void testBeforeEach() {
+		counter++;
+		System.out.println(counter);
+	}
+
+	@Test
+	@AfterAll
+	static void testEnd() {
+		System.out.println("Tests ended.");
+	}
 
 }
+
+
+
+
+
 
 
 

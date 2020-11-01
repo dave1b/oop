@@ -13,21 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.mashup;
+package ch.hslu.sw06.uebung;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
+import ch.hslu.sw07.Person;
 import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.Warning;
+
+
 
 /**
  * Testfälle für Point.
  */
-@SuppressWarnings("PMD.TooManyMethods")
+//@SuppressWarnings("PMD.TooManyMethods")
 final class PointTest {
 
     /**
@@ -114,10 +119,9 @@ final class PointTest {
      * Test {@link ch.hslu.demo.Point#equals(java.lang.Object)} Contract.
      */
     @Test
-    void testEqualsContract() {
-        EqualsVerifier.forClass(Point.class).verify();
-    }
-
+	void testEqualsContract() {
+		EqualsVerifier.forClass(Point.class).suppress(Warning.NONFINAL_FIELDS).verify();
+	}
     /**
      * Test {@link ch.hslu.demo.Point#equals(java.lang.Object)}.
      */
