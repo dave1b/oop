@@ -1,4 +1,4 @@
-package ch.hslu.demo;
+package ch.hslu.mashup;
 
 public class Main_template {
 

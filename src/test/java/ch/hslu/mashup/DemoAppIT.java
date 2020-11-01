@@ -13,10 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.demo;
+package ch.hslu.mashup;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
+
+import ch.hslu.mashup.DemoApp;
 
 /**
  * Beispiel für Integrationstests. Namenskonvention 'IT' am Schluss. Werden mit

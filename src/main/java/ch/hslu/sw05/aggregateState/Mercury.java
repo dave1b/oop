@@ -2,14 +2,10 @@ package ch.hslu.sw05.aggregateState;
 
 public class Mercury extends Element{
 
-	public Mercury () {
-		super( -38.8344f, 356.73f);
+	public Mercury (float temp) {
+		super( -38.8344f, 356.73f, temp);
 	}
-	
-<<<<<<< HEAD
-	@Override
-=======
->>>>>>> refs/remotes/origin/main
+
 	public String toString() {
 		return super.toString() + ". -> Hinweis: GIFTIG";
 		

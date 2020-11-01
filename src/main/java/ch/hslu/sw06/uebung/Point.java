@@ -124,27 +124,24 @@ public final class Point {
 		return y;
 	}
 
-	/**
-	 * Zwei Punkte mit identischen Koordinaten sind gleich. {@inheritDoc}.
-	 */
 	@Override
-	public boolean equals(final Object obj) {
+	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
 		}
 		if (!(obj instanceof Point)) {
 			return false;
 		}
-		final Point other = (Point) obj;
-		return this.x == other.x && this.y == other.y;
+		Point other = (Point) obj;
+		return Double.doubleToLongBits(betrag) == Double.doubleToLongBits(other.betrag)
+				&& Double.doubleToLongBits(winkel) == Double.doubleToLongBits(other.winkel) && x == other.x
+				&& Double.doubleToLongBits(xPolar) == Double.doubleToLongBits(other.xPolar) && y == other.y
+				&& Double.doubleToLongBits(yPolar) == Double.doubleToLongBits(other.yPolar);
 	}
 
-	/**
-	 * Liefert Hashcode auf Basis von x und y-Koordinate. {@inheritDoc}.
-	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.x, this.y);
+		return Objects.hash(betrag, winkel, x, xPolar, y, yPolar);
 	}
 
 	/**
@@ -161,8 +158,13 @@ public final class Point {
 	}
 
 	public void moveRealative(Point point) {
-		this.x += point.getX();
-		this.y += point.getY();
+		moveRealative(point.getX(),point.getY());
+//		this.x += point.getX();
+//		this.y += point.getY();
 	}
+	
+	
+	
+	
 
 }

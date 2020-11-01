@@ -17,7 +17,7 @@ public interface Addition {
 	 * @param second int
 	 * @return the sum of both ints.
 	 */
-	int addition(int x, int y);
+	long addition(int x, int y);
 	
 	
 	

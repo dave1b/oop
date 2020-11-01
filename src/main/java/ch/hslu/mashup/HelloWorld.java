@@ -1,4 +1,4 @@
-package ch.hslu.demo;
+package ch.hslu.mashup;
 
 public class HelloWorld {
 	public static void main(final String[] args) {
