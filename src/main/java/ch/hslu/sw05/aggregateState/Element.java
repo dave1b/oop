@@ -13,7 +13,7 @@ import java.util.Objects;
  *
  */
 
-public abstract class Element {
+public abstract class Element implements Comparable<Element> {
 
 	private float meltingPoint;
 	
@@ -90,7 +90,9 @@ public abstract class Element {
 		
 	}
 	
-	
+	public int compareTo(Element other) {
+		return Float.compare(this.temp, other.temp);
+	}
 	
 	
 	

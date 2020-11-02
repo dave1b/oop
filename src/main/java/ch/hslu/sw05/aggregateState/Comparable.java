@@ -1,4 +1,4 @@
-package ch.hslu.sw07;
+package ch.hslu.sw05.aggregateState;
 
 public interface Comparable<T> {
 

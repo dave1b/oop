@@ -1,6 +1,7 @@
 package ch.hslu.sw07;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Before;
 import org.junit.jupiter.api.AfterAll;
@@ -35,6 +36,7 @@ public class PersonTest {
 	}
 	
 	
+	// The constructor gets tested
 	@Test
 	 void testConstructor()  {
 		System.out.println(per1.toString());
@@ -91,6 +93,37 @@ public class PersonTest {
 		Person per = new Person("Brunner", "Dave", 1998);
 		Person per2 = new Person("Brunner", "Dave", 1999);
 		assertEquals(-1, per.compareTo(per2));
+	}
+	@Test
+	public void testCompareTo2()  {
+		Person per = new Person("Brunner", "Dave", 1998);
+		Person per2 = per;
+		assertEquals(0, per.compareTo(per2));
+	}
+	@Test
+	public void testCompareTo3()  {
+		Person per = new Person("Brunner", "Dave", 1999);
+		Person per2 = new Person("Brunner", "Dave", 1999);
+		assertEquals(0, per.compareTo(per2));
+	}
+	@Test
+	public void testCompareTo4()  {
+		Person per = new Person("Brunner", "Dave", 1998);
+		Person per2 = new Person("Brunner", "Dave", 1996);
+		assertEquals(1, per.compareTo(per2));
+	}
+	
+	@Test
+	void testPersonNameComparator() {
+		assertEquals(0, per1.compare(per1, per2));
+	}
+	@Test
+	void testPersonNameComparator1() {
+		assertNotEquals(0, per1.compare(per3, per4));
+	}
+	@Test
+	void testPersonNameComparator2() {
+		assertEquals(0, per1.compare(per4, per5));
 	}
 	
 	
