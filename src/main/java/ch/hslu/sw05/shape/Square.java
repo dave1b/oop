@@ -9,12 +9,12 @@ public class Square extends Shape {
 	}
 
 	@Override
-	public int getPerimeter() {
+	final public int getPerimeter() {
 		return width;
 	}
 
 	@Override
-	public int getArea() {
+	final public int getArea() {
 		return (width * width);
 	}
 }

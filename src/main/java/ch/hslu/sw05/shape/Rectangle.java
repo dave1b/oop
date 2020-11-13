@@ -11,27 +11,27 @@ public  class Rectangle extends Shape {
 		this.height = height;		
 	}
 	
-	public void changeDimension(int newWidth, int newHeight) {
+	final public void changeDimension(int newWidth, int newHeight) {
 		this.width = newWidth;
 		this.height = newHeight;
 		
 	}
 	
-	public int getWidth() {
+	final public int getWidth() {
 		return this.width;
 	}
 	
-	public int getHeight() {
+	final public int getHeight() {
 		return this.height;
 	}
 	
 	@Override
-	public int getPerimeter() {
+	final public int getPerimeter() {
 		return (2 * width + 2* height);
 	}
 	
 	@Override
-	public int getArea() {
+	final public int getArea() {
 		return (width * height);
 	}
 	

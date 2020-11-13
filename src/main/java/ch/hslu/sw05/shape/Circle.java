@@ -9,21 +9,21 @@ public class Circle extends Shape {
 		this.diameter = diameter;
 	}
 	
-	public void setDiameter(int diameter) {
+	final public void setDiameter(int diameter) {
 		this.diameter = diameter;
 	}
 	
-	public int getDiameter() {
+	final public int getDiameter() {
 		return this.diameter;
 	}
 	
 	@Override
-	public int getPerimeter() {
+	final public int getPerimeter() {
 		return (this.diameter/2*2*3);
 	}
 	
 	@Override
-	public int getArea() {
+	final public int getArea() {
 		return(this.diameter/2 * this.diameter/2 * 3);
 	}
 }

@@ -1,6 +1,6 @@
 package ch.hslu.sw08;
 
-public class Book extends Library{
+public class Book extends Library {
 	private String name;
 	
 	

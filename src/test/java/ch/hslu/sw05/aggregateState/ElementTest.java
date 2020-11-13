@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import ch.hslu.sw05.aggregateState.Element.States;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.Warning;
 
@@ -14,6 +15,7 @@ class ElementTest {
 	static Nitrogen nitrogen1;
 	static Mercury mercury1;
 	static Mercury mercury2;
+	static Mercury mercury3;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -21,6 +23,7 @@ class ElementTest {
 		nitrogen1 = new Nitrogen(-200f);
 		mercury1 = new Mercury(35f);
 		mercury2 = mercury1;
+		mercury3 = new Mercury(-135f);
 		System.out.println(nitrogen1.hashCode());
 	}
 
@@ -45,6 +48,14 @@ class ElementTest {
 	void testCompareTo3() {
 		assertEquals(0,mercury1.compareTo(mercury2));
 	}
+	@Test
+	void euqals() {
+		assertEquals(true,mercury2.equals(mercury2));
+	}
+	@Test
+	void equals2() {
+		assertEquals(false,mercury3.equals(mercury2));
+	}
 
 	@Test
 	void testEqualsContract() {
@@ -53,5 +64,10 @@ class ElementTest {
 		.withIgnoredFields("boilingPoint")
 		.suppress(Warning.STRICT_INHERITANCE)
 		.verify();
+	}
+	@Test
+	void printOut() {
+		System.out.println(nitrogen1.toString());
+//		System.out.println(States.FLÜSSIG);
 	}
 }

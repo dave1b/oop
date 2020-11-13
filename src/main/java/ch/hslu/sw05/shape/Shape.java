@@ -10,16 +10,16 @@ public abstract class Shape {
 		this.y = y;
 	}
 
-	public void move(int newX, int newY) {
+	final public void move(int newX, int newY) {
 		this.x = newX;
 		this.y = newY;
 	}
 
-	public int getX() {
+	final public int getX() {
 		return this.x;
 	}
 
-	public int getY() {
+	final public int getY() {
 		return this.y;
 	}
 

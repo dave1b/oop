@@ -30,6 +30,22 @@ public abstract class Element implements Comparable<Element> {
 	}
 	
 	
+	public enum States {
+		FLÜSSIG("liquid"),FEST("solid"), GASFÖRMIG("gaseous"), UNDEFINED("undefined");
+		
+		private final String state;
+		
+		private States(final String state) {
+			this.state = state;
+		}
+		public String getValue() {
+			return this.state;
+			}	
+	}
+	
+	
+	
+	
 
 	/**
 	 * Method that gives back the aggregate state of the element at the temperature given as the parameter.
@@ -54,13 +70,13 @@ public abstract class Element implements Comparable<Element> {
 	private String getStateString() {
 		switch(getState()) {
 			case 1:
-				return "liquid";
+				return States.FLÜSSIG.getValue();
 			case 2:
-				return "solid";
+				return States.FEST.getValue();
 			case 3:
-				return "gaseous";
+				return States.GASFÖRMIG.getValue();
 			default:
-				return "Error";			
+				return States.UNDEFINED.getValue();			
 		}			
 	}
 	
@@ -80,7 +96,7 @@ public abstract class Element implements Comparable<Element> {
 			return false;
 		}
 		Element other = (Element) obj;
-		return Objects.equals(getState(), other.getState());
+		return Objects.equals(this.getState(), other.getState());
 				
 	}
 	
@@ -94,8 +110,19 @@ public abstract class Element implements Comparable<Element> {
 		return Float.compare(this.temp, other.temp);
 	}
 	
+
 	
+	public static void main(final String[] args) {
+		 Nitrogen nitrogen1;
+		 Mercury mercury1;
+		 Mercury mercury2;
+		 Mercury mercury3;
+		nitrogen1 = new Nitrogen(-200f);
+		mercury1 = new Mercury(35f);
+		mercury2 = mercury1;
+		mercury3 = new Mercury(-135f);
+		System.out.println(nitrogen1.toString());
 	
-	
+	}
 	
 }
