@@ -36,8 +36,8 @@
 	 -->
     <Loggers>
         <Root level="debug">
-            <AppenderRef ref="Console" />
-            <AppenderRef ref="LocalFile" />
+            <AppenderRef ref="Console" level="debug"/>
+            <AppenderRef ref="LocalFile" level="info"/>
         </Root>
     </Loggers>
 </Configuration>

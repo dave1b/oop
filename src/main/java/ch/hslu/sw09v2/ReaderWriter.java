@@ -70,7 +70,7 @@ C:/Users/Dave/myCloud/HSLU/Module/OOP/IO-Files/Write.txt
 	static public void read() throws IOException {
 		String line = null;
 		Charset charset = Charset.forName("UTF-8");
-		Path path = Paths.get("C:/Users/Dave/myCloud/HSLU/Module/OOP/IO-Files/Read.txt");
+		Path path = Paths.get("C:/Users/Dave/myCloud/HSLU/Module/OOP/IO-Files/Text.txt");
 		filename = path.toString();
 		BufferedReader reader = Files.newBufferedReader(path, charset);
 
@@ -99,7 +99,7 @@ C:/Users/Dave/myCloud/HSLU/Module/OOP/IO-Files/Write.txt
 	static public void write() throws IOException  {	
 		String input;
 		
-		FileWriter writer = new FileWriter("C:/Users/Dave/myCloud/HSLU/Module/OOP/IO-Files/Write.txt");
+		FileWriter writer = new FileWriter("C:/Users/Dave/myCloud/HSLU/Module/OOP/IO-Files/Text.txt");
 		LOG.debug("Geben Sie einen Text ein (Abbrechen mit 'exit')");
 		do {
 		input = scanner.next();
