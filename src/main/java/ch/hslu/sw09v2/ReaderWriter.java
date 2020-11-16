@@ -2,12 +2,10 @@ package ch.hslu.sw09v2;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -20,13 +18,11 @@ public class ReaderWriter {
 
 	static private Scanner scanner = new Scanner(System.in);
 	static private final Logger LOG = LogManager.getLogger(ReaderWriter.class);
-	static String input;
+	static private String input;
+	
+	@SuppressWarnings("unused")
 	private static String filename;
 
-	public ReaderWriter() {
-
-
-	}
 
 	
 	public static void main(String[] args) {
@@ -43,37 +39,38 @@ C:/Users/Dave/myCloud/HSLU/Module/OOP/IO-Files/Write.txt
 
 
 	public static void interactWithFile()  {
-		String pfad;
+		
 		LOG.debug("Möchten Sie lesen 'r' oder schreiben 'w' ?");
 		input = scanner.next();
-		LOG.debug("Geben Sie den gewünschten Pfad des Files ein:");
-		pfad = scanner.next();
-		
 		if(input.equals("r")) {
+			LOG.debug("read \n");
 			try {
-				read(pfad);
+				read();
 			}  
 			catch (IOException e) {
 				LOG.warn("Cannot find filename: " + e.getMessage());
 			}
 		} else if(input.equals("w")) {
+			LOG.debug("write \n");
 			try {
-				write(pfad);
+				write();
 			}
 			catch(IOException e){
 				LOG.warn("Cannot find filename: " + e.getMessage());
 			}
+		} else {
+			LOG.debug("Starten Sie erneut und geben Sie 'r' oder 'w'.");
+			return;
 		}
 	}
 
 
 
 
-	static public void read(String Pfad) throws IOException {
+	static public void read() throws IOException {
 		String line = null;
-
 		Charset charset = Charset.forName("UTF-8");
-		Path path = Paths.get(Pfad);
+		Path path = Paths.get("C:/Users/Dave/myCloud/HSLU/Module/OOP/IO-Files/Read.txt");
 		filename = path.toString();
 		BufferedReader reader = Files.newBufferedReader(path, charset);
 
@@ -94,20 +91,23 @@ C:/Users/Dave/myCloud/HSLU/Module/OOP/IO-Files/Write.txt
 		ArrayList<String> output= new ArrayList<String>();
 		output = (ArrayList<String>) Files.readAllLines(path);
 		output.forEach((n) -> System.out.println(n)); 
-		System.out.println(output.size());			
 	}
 
 
 
 
-	static public void write(String pfad) throws IOException  {		
+	static public void write() throws IOException  {	
+		String input;
 		
-		FileWriter writer = new FileWriter("C:/Users/Dave/myCloud/HSLU/Module/OOP/IO-Files/.txt");
+		FileWriter writer = new FileWriter("C:/Users/Dave/myCloud/HSLU/Module/OOP/IO-Files/Write.txt");
 		LOG.debug("Geben Sie einen Text ein (Abbrechen mit 'exit')");
-//		do {
+		do {
 		input = scanner.next();
+		if(!(input.equals("exit"))) {			
 		writer.write(input);	
-//		} while (input != "exit"); 
+		writer.write(" ");
+		}
+		} while (!input.equals("exit")); 
 		writer.write("\n");
 		writer.close();
 		LOG.debug("Erfolgreich gespeichert.");
