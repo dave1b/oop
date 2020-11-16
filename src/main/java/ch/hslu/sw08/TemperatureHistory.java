@@ -42,14 +42,14 @@ public class TemperatureHistory extends Temperature implements Comparable<Temper
 	
 	public float getMaxItem() {
 		if(verlauf.size() > 0) {
-		return (Collections.max(verlauf,null)).getTemperature();
+		return (Collections.max(verlauf,null)).getTemperatureInCelcious();
 		}
 		return 0;
 	}
 	
 	public float getMinItem() {
 		if(verlauf.size() > 0) {
-			return (Collections.min(verlauf,null)).getTemperature();
+			return (Collections.min(verlauf,null)).getTemperatureInCelcious();
 		} 
 			return 0;
 	}
@@ -61,7 +61,7 @@ public class TemperatureHistory extends Temperature implements Comparable<Temper
 		while(iterator.hasNext()) {
 			i++;
 			Temperature t = iterator.next();		
-			sum += t.getTemperature();
+			sum += t.getTemperatureInCelcious();
 		}
 		if(i != 0) {
 		return sum/i;

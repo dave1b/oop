@@ -33,6 +33,18 @@ public class TemperatureTest {
 		final Temperature temp = new Temperature("k",250f);
 		assertEquals(-23.15f, temp.getTemperatureInCelcious(), 0.1f);
 	}
+	
+	@Test
+	public void testConstruktor3() {
+		final Exception e =
+		assertThrows(IllegalArgumentException.class, () -> {
+			@SuppressWarnings("unused")
+			final Temperature temp = new Temperature("w", 30f);
+			});
+		assertEquals("The String typ must either be 'c' or 'k'!",e.getMessage());
+		
+		
+	}
 	@Test
 	public void testStaticConstruktor() {
 		final Temperature temp = Temperature.createFromCelcious(25f);
@@ -70,7 +82,7 @@ public class TemperatureTest {
 	
 	@Test
 	public void testGetKelvin() {
-		assertEquals(293.15f, Temperature.getTemperatureInKelvin(20), 0);		
+		assertEquals(293.15f, Temperature.getTemperatureFromCelsiousToKelvin(20), 0);		
 	}
 	
 	@Test
@@ -120,7 +132,7 @@ public class TemperatureTest {
 	}
 	@Test
 	public void testCompareTo3()  {
-		assertEquals(1, temp1.compareTo(temp3));			
+		assertEquals(1, temp1.compareTo(temp3));	
 	}
 	
 	
