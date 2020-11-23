@@ -1,14 +1,10 @@
-# Java Projekt-Template fuer OOP/PLAB, PRG, AD und SWDE
+# Java Projekt-Template für OOP/PLAB, PRG, AD und SWDE
 
 ## Zweck
 Dieses Projekt dient in den Modulen OOP/PLAB, PRG, AD, SWDE, VSK und APPE als 
 Template fuer einfache Java-Projekte. Es nutzt einen auf 
 [Apache Maven](https://maven.apache.org/) basierenden (und somit IDE-unabhaengigen) 
 Build und definiert die dafür notwendige, standardisierte Verzeichnisstruktur.
-
-## Distribution / Download
-Die jeweils aktuelle Version steht auf [SWITCHdrive](https://drive.switch.ch/) zur Verfügung:
-https://drive.switch.ch/index.php/s/nz0UdWDlSQ9ogDX?path=%2F15_maven_template
 
 
 ## Enhaltene Libraries (Dependencies)
