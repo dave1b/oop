@@ -1,8 +1,15 @@
 package ch.hslu.sw09v2;
 
-public class YouDontKnowMyBirthdayException extends Exception {
 
-	private static final long serialVersionUID = 1L;
+/**
+ * Checked Exception for 
+ * @author Dave
+ *
+ */
+
+@SuppressWarnings("serial")
+public class YouDontKnowMyBirthdayException extends Exception {
+	
 	private String key;
 	
 	public YouDontKnowMyBirthdayException(String key) {

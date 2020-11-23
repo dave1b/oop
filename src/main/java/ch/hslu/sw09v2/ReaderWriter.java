@@ -85,29 +85,18 @@ C:/Users/Dave/myCloud/HSLU/Module/OOP/IO-Files/Write.txt
 
 	}
 
-	
-	static public void readWithLines(String pfad) throws IOException  {
-		Path path = Paths.get(pfad);
-		ArrayList<String> output= new ArrayList<String>();
-		output = (ArrayList<String>) Files.readAllLines(path);
-		output.forEach((n) -> System.out.println(n)); 
-	}
-
-
-
 
 	static public void write() throws IOException  {	
 		String input;
-		
 		FileWriter writer = new FileWriter("C:/Users/Dave/myCloud/HSLU/Module/OOP/IO-Files/Text.txt");
-		LOG.debug("Geben Sie einen Text ein (Abbrechen mit 'exit')");
+		LOG.debug("Geben Sie einen Text ein (Speicher und schliessen mit 'save')");
 		do {
 		input = scanner.next();
-		if(!(input.equals("exit"))) {			
+		if(!(input.equals("save"))) {			
 		writer.write(input);	
 		writer.write(" ");
 		}
-		} while (!input.equals("exit")); 
+		} while (!input.equals("save")); 
 		writer.write("\n");
 		writer.close();
 		LOG.debug("Erfolgreich gespeichert.");
@@ -117,4 +106,12 @@ C:/Users/Dave/myCloud/HSLU/Module/OOP/IO-Files/Write.txt
 
 
 
+	/*	
+	static public void readWithLines(String pfad) throws IOException  {
+		Path path = Paths.get(pfad);
+		ArrayList<String> output= new ArrayList<String>();
+		output = (ArrayList<String>) Files.readAllLines(path);
+		output.forEach((n) -> System.out.println(n)); 
+	}
+	 */
 }
