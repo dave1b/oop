@@ -54,7 +54,7 @@ public class TemperatureHistoryTest {
 		h1.add(20f);
 		h1.add(60f);
 		h1.add(20f);
-		assertEquals(60f, h1.getMaxItem(), 0);		
+		assertEquals(60f, h1.getMaxItem().getTemperatureInCelsius(), 0);		
 	}
 	
 	@Test
@@ -63,7 +63,7 @@ public class TemperatureHistoryTest {
 		h1.add(20f);
 		h1.add(60f);
 		h1.add(5f);
-		assertEquals(5f, h1.getMinItem(), 0);		
+		assertEquals(5f, h1.getMinItem().getTemperatureInCelsius(), 0);		
 	}
 	
 	@Test
@@ -89,9 +89,9 @@ public class TemperatureHistoryTest {
 	@Test
 	public void testWithZeroItems() {
 		assertEquals(0,h1.getCount());
-		assertEquals(0, h1.getMaxItem(), 0);
-		assertEquals(0f, h1.getMinItem(), 0);
-		assertEquals(0f, h1.getAverage(), 0);
+		assertEquals(20f, h1.getMaxItem().getTemperatureInCelsius(), 0);
+		assertEquals(20f, h1.getMinItem().getTemperatureInCelsius(), 0);
+		assertEquals(0, h1.getAverage(), 0);
 	}
 	
 	

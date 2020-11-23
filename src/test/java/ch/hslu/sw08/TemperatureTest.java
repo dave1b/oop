@@ -8,6 +8,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.api.Disabled;
 
+import ch.hslu.sw08.Temperature.TempType;
+
 
 
 public class TemperatureTest {
@@ -17,72 +19,69 @@ public class TemperatureTest {
 	final Temperature temp2 = new Temperature(20);
 	final Temperature temp3 = new Temperature(10);
 	
-	
-	
-	
-	
-	
-	
+
 	@Test
-	public void testConstruktor() {
-		final Temperature temp = new Temperature("c",20f);
-		assertEquals(20, temp.getTemperatureInCelcious(), 0);
+	public void testConstruktorCelsius() {
+		final Temperature temp = new Temperature(TempType.Celsius,20f);
+		assertEquals(20, temp.getTemperatureInCelsius(), 0);
 	}
 	@Test
-	public void testConstruktor2() {
-		final Temperature temp = new Temperature("k",250f);
-		assertEquals(-23.15f, temp.getTemperatureInCelcious(), 0.1f);
+	public void testConstruktorKelvin() {
+		final Temperature temp = new Temperature(TempType.Kelvin,250f);
+		assertEquals(-23.15f, temp.getTemperatureInCelsius(), 0.1f);
 	}
 	
 	@Test
-	public void testConstruktor3() {
+	public void testConstruktorIllegalArgument() {
 		final Exception e =
 		assertThrows(IllegalArgumentException.class, () -> {
 			@SuppressWarnings("unused")
-			final Temperature temp = new Temperature("w", 30f);
+			final Temperature temp = new Temperature(TempType.Gurke, 30f);
 			});
-		assertEquals("The String typ must either be 'c' or 'k'!",e.getMessage());
+		assertEquals("The Enum typ must either be 'TempType.Celsius' or 'TempType.Kelvin!'",e.getMessage());
 		
 		
 	}
 	@Test
-	public void testStaticConstruktor() {
-		final Temperature temp = Temperature.createFromCelcious(25f);
-		assertEquals(25f, temp.getTemperatureInCelcious(), 0);
+	public void testCreateFromCelsius() {
+		final Temperature temp = Temperature.createFromCelsius(25f);
+		assertEquals(25f, temp.getTemperatureInCelsius(), 0);
 	}
 	
 	@Test
-	public void testStaticConstruktor2() {
+	public void testCreateFromKelvin() {
 		final Temperature temp = Temperature.createFromKelvin(250f);
-		assertEquals(-23.15f, temp.getTemperatureInCelcious(), 0.1f);
+		assertEquals(-23.15f, temp.getTemperatureInCelsius(), 0.1f);
 	}
 	@Test
-	public void testStaticConstruktor3() {
+	public void testCreateFromCelsiusIllegalArgument() {
 		final Exception e =
 		assertThrows(IllegalArgumentException.class, () -> {
 			@SuppressWarnings("unused")
-			final Temperature temp = Temperature.createFromCelcious(-300f);
+			final Temperature temp = Temperature.createFromCelsius(-300f);
 			});
-		assertEquals("The entered temperature must be >= -273.15f", e.getMessage());
+		assertEquals("The entered temperature must be >= -273.15", e.getMessage());
 	}
 	
 	@Test
-	public void testStaticConstruktor4() {
+	public void testCreateFromKelvinIllegalArgument() {
+		final Exception e =
 		assertThrows(IllegalArgumentException.class, () -> {
 			@SuppressWarnings("unused")
 			final Temperature temp = Temperature.createFromKelvin(-1f);
 		});
+		assertEquals("The entered temperature must be >= 0f", e.getMessage());
 	}
 	
 	@Test
-	public void testGetCelcious() {
+	public void testGetCelsius() {
 		final Temperature temp = new Temperature(20);
-		assertEquals(20f, temp.getTemperatureInCelcious(), 0);
+		assertEquals(20f, temp.getTemperatureInCelsius(), 0);
 	}
 	
 	@Test
 	public void testGetKelvin() {
-		assertEquals(293.15f, Temperature.getTemperatureFromCelsiousToKelvin(20), 0);		
+		assertEquals(293.15f, Temperature.convertTemperatureFromCelsiousToKelvin(20), 0);		
 	}
 	
 	@Test
@@ -91,22 +90,22 @@ public class TemperatureTest {
 		assertEquals(68f, temp.getTemperatureInFahrenheit(), 0);	
 	}
 	@Test
-	public void setTemperaturRelativeCelcious() {
+	public void setTemperaturRelativeCelsius() {
 		Temperature temp = new Temperature(20);
-		temp.setTemperaturRelativeCelcious(20);
-		assertEquals(40, temp.getTemperatureInCelcious(), 0);	
+		temp.setTemperaturRelativeCelsius(20);
+		assertEquals(40, temp.getTemperatureInCelsius(), 0);	
 	}
 	@Test
 	public void setTemperaturRelativeKelvin() {
 		Temperature temp = new Temperature(20);
 		temp.setTemperaturRelativeKelvin(293.15f);
-		assertEquals(40, temp.getTemperatureInCelcious(),0);	
+		assertEquals(40, temp.getTemperatureInCelsius(),0);	
 	}
 	@Test
 	public void setTemperaturRelativeFahrenheit() {
 		Temperature temp = new Temperature(20);
 		temp.setTemperaturRelativeFahrenheit(20);
-		assertEquals(13.333333f, temp.getTemperatureInCelcious(), 1f);	
+		assertEquals(13.333333f, temp.getTemperatureInCelsius(), 1f);	
 	}
 	
 	
