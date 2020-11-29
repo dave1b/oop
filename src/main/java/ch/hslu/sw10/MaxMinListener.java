@@ -6,7 +6,7 @@ import java.util.EventListener;
 
 public interface MaxMinListener extends EventListener {
 
-	public  void extremValueChanged(TemperaturEvent pcEvent);
+	public  void extremeValueChanged(TemperaturEvent pcEvent);
 
 	
 	

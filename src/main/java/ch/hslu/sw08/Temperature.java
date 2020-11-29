@@ -1,4 +1,6 @@
 package ch.hslu.sw08;
+import java.time.LocalDateTime;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,6 +16,7 @@ public class Temperature implements Comparable<Temperature>
 {
 	private static final Logger LOG = LogManager.getLogger(Temperature.class);
 	final static float KELVINOFFSET = 273.15f;
+	private LocalDateTime timestamp;
 
 
 	// The temperature is stated in °C
@@ -33,13 +36,21 @@ public class Temperature implements Comparable<Temperature>
 	 * @return ein Temperatur-Objekt.
 	 */
 	final public static Temperature createFromCelsius(final float celsius) {
-		LOG.debug("createFromCelsius: Anfang");
 		if(celsius < -KELVINOFFSET) {
 			throw new IllegalArgumentException("The entered temperature must be >= "+ -KELVINOFFSET);
-		} else {
-			LOG.debug("createFromCelsius: Ende");	
+		} else {	
 			return new Temperature(TempType.Celsius, celsius);		
 		}		
+	}
+	final public static Temperature createFromCelsiusWithTimestamp(final float celsius, LocalDateTime timestamp) {
+		LOG.debug(celsius);
+		if(celsius < -KELVINOFFSET) {
+			throw new IllegalArgumentException("The entered temperature must be >= "+ -KELVINOFFSET);
+		} else {	
+			return new Temperature(TempType.Celsius, celsius, timestamp);		
+		}		
+		
+		
 	}
 
 	/**
@@ -67,6 +78,7 @@ public class Temperature implements Comparable<Temperature>
 		// Instanzvariable initialisieren
 		this.temp = temp;
 	}
+
 	/**
 	 * Konstruktor mit der Option den Temperaturwert in Celsius oder Grad anzugeben.
 	 * @param Enum als typ entweder TempType.Celsius für Celsious oder TempType.Kelcin für Kelvin. Wirft eine IllegalArgumentException bei nichteinhalten der Parametervorgaben.
@@ -74,14 +86,34 @@ public class Temperature implements Comparable<Temperature>
 	 */
 	public Temperature(TempType typ, float temp)
 	{
+		
 		if(typ.equals(TempType.Celsius)){
 			this.temp = temp;
+			LOG.debug("Celcius");
 		} else if(typ.equals(TempType.Kelvin)) {
 			this.temp = convertTemperatureFromKelvinToCelsious(temp);
 		} else {
 			throw new IllegalArgumentException("The Enum typ must either be 'TempType.Celsius' or 'TempType.Kelvin!'");
 		}
+		LOG.debug(this.getTemperatureInCelsius());
 	}
+
+	public Temperature(TempType typ, float temp, LocalDateTime timestamp)
+	{
+		
+		if(typ.equals(TempType.Celsius)){
+			this.temp = temp;
+			this.timestamp = timestamp;
+			LOG.debug("Celcius");
+		} else if(typ.equals(TempType.Kelvin)) {
+			this.temp = convertTemperatureFromKelvinToCelsious(temp);
+			this.timestamp = timestamp;
+		} else {
+			throw new IllegalArgumentException("The Enum typ must either be 'TempType.Celsius' or 'TempType.Kelvin!'");
+		}
+		
+	}
+
 
 	/*
 	 * Konstruktor mit Default-Initialwert.
@@ -128,7 +160,13 @@ public class Temperature implements Comparable<Temperature>
 
 	}
 
-
+	/**
+	 * Ausgabe der timestamp
+	 */
+	final public LocalDateTime getTimestamp(){
+		return this.timestamp;
+		
+	}
 
 
 
@@ -266,6 +304,7 @@ public class Temperature implements Comparable<Temperature>
 	{       
 		return temp + KELVINOFFSET;    
 	}
+
 
 
 

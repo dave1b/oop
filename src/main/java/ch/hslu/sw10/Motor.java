@@ -5,13 +5,11 @@ import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
 
-final public class Motor implements Switchable, PropertyChangeListener {
+final public class Motor implements Switchable {
 
 	private final List<PropertyChangeListener> changeListeners = new ArrayList<>();
 	//The state is stated in rpm.
 	private MotorState state = MotorState.OFF;
-	// Temp is stated in celcius.
-	private float temp = 0;
     private int switches;
     
     static private enum MotorState {
@@ -27,7 +25,7 @@ final public class Motor implements Switchable, PropertyChangeListener {
     	if(!isSwitchedOn()) {
     		this.state = MotorState.ON;
     		final PropertyChangeEvent pcEvent = new PropertyChangeEvent(this,"state",MotorState.OFF,MotorState.ON);
-    		this.propertyChange(pcEvent);
+    		this.firePropertyChange(pcEvent);
     		increaseSwitches();   		
     	}
    
@@ -38,7 +36,7 @@ final public class Motor implements Switchable, PropertyChangeListener {
     	if(isSwitchedOn()) {
     		this.state = MotorState.OFF;
     		final PropertyChangeEvent pcEvent = new PropertyChangeEvent(this,"state",MotorState.ON,MotorState.OFF);
-    		this.propertyChange(pcEvent);
+    		this.firePropertyChange(pcEvent);
     		increaseSwitches();   		
     	}
         increaseSwitches();
@@ -73,8 +71,7 @@ final public class Motor implements Switchable, PropertyChangeListener {
 		}
 	}
 	
-	@Override
-	public void propertyChange(final PropertyChangeEvent pcEvent) {
+	public void firePropertyChange(final PropertyChangeEvent pcEvent) {
 		for(final PropertyChangeListener listener : this.changeListeners) {
 			listener.propertyChange(pcEvent);
 		}		

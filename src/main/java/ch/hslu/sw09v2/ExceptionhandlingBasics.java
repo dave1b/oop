@@ -50,7 +50,7 @@ public class ExceptionhandlingBasics implements MaxMinListener {
 	}
 
 	@Override
-	public void extremValueChanged(TemperaturEvent e) {
+	public void extremeValueChanged(TemperaturEvent e) {
 		LOG.info("Type: " + e.getPropertName() + " \n Source: " + e.getSource() + "\n new extreme Value: " + e.getNewExtremeValue());
 	}
 	

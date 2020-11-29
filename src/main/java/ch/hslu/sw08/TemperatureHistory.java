@@ -1,21 +1,24 @@
 package ch.hslu.sw08;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import ch.hslu.sw10.MaxMinListener;
 import ch.hslu.sw10.TemperaturEvent;
 import ch.hslu.sw10.TemperaturEvent.Type;
+import ch.hslu.sw11.ReadCharStreamFromFile;
 
-public class TemperatureHistory extends Temperature implements Comparable<Temperature>, MaxMinListener {
+public class TemperatureHistory extends Temperature implements Comparable<Temperature> {
 
 	final List<Temperature> verlauf = new ArrayList<>();
 	private final List<MaxMinListener> changeListeners = new ArrayList<>();
-
+	private static final Logger LOG = LogManager.getLogger(TemperatureHistory.class);
 
 	public void add(float temp) {
 
@@ -29,6 +32,18 @@ public class TemperatureHistory extends Temperature implements Comparable<Temper
 			verlauf.add(Temperature.createFromCelsius(temp));
 		}
 	}
+	
+	public void addWithTimestamp(float temp, LocalDateTime timestamp) {
+		if(!verlauf.contains(new Temperature(temp)))
+		{
+			if(Float.compare(temp, this.getMaxItem().getTemperatureInCelsius()) == 1 && temp > -Temperature.KELVINOFFSET) {
+				newMax();
+			} else if(Float.compare(temp, this.getMinItem().getTemperatureInCelsius()) == -1 && temp > -Temperature.KELVINOFFSET) {
+				newMin();
+			}
+			verlauf.add(Temperature.createFromCelsiusWithTimestamp(temp, timestamp));
+		}
+	}
 
 
 	public void clear() {
@@ -36,6 +51,7 @@ public class TemperatureHistory extends Temperature implements Comparable<Temper
 	}
 
 	public int getCount() {
+//		System.out.println(verlauf.size());
 		return verlauf.size();
 	}
 	public Temperature getWithIndex(int index) {
@@ -91,13 +107,13 @@ public class TemperatureHistory extends Temperature implements Comparable<Temper
 
 	public void newMax() {
 		final TemperaturEvent pcEvent = new TemperaturEvent(this, Type.MAX, this.getMaxItem());
-		this.extremValueChanged(pcEvent);
+		this.FireExtremeValueChanged(pcEvent);
 	}
 
 
 	private void newMin() {
 		final TemperaturEvent pcEvent = new TemperaturEvent(this, Type.MIN, this.getMinItem());
-		this.extremValueChanged(pcEvent);		
+		this.FireExtremeValueChanged(pcEvent);		
 	} 
 
 	public void addPropertyChangeListener(MaxMinListener listener) {
@@ -112,20 +128,22 @@ public class TemperatureHistory extends Temperature implements Comparable<Temper
 		}
 	}
 
-	@Override
-	public void extremValueChanged(TemperaturEvent pcEvent) {
+	
+	public void FireExtremeValueChanged(TemperaturEvent pcEvent) {
 		for(final MaxMinListener listener : this.changeListeners) {
-			(listener).extremValueChanged(pcEvent);
+			(listener).extremeValueChanged(pcEvent);
 		}		
 	}
 
 
 	public String toString() {
-		return "Size: " + this.getCount() + "\nAverage: " + this.getAverage() + "\nMax: " + this.getMaxItem() + "\nMin: " + this.getMinItem();
+		return "Size: " + (this.getCount()+1) + "\nAverage: " + this.getAverage() + "\nMax: " + this.getMaxItem() + "\nMin: " + this.getMinItem();
 	}
 
 
-	
+	public List<Temperature> getArrayList() {
+		return verlauf;
+	}
 
 
 

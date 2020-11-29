@@ -30,6 +30,7 @@ public class TemperaturEvent extends EventObject {
 	
 	public Type getPropertName() {
 		return this.type;
+		
 	}
 	
 	public Object getNewExtremeValue() {
@@ -37,7 +38,7 @@ public class TemperaturEvent extends EventObject {
 	}
 	
 	public String toString() {
-		return "Type: " + this.getPropertName() + " \nSource: " + this.getSource() + "\n new extreme Value: " + this.getNewExtremeValue();
+		return "Type: " + this.getPropertName() + " \nSource: " + this.getSource() + "\nnew extreme Value: " + this.getNewExtremeValue();
 	}
 	
 }
