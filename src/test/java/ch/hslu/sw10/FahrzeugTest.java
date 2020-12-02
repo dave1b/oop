@@ -20,8 +20,10 @@ public class FahrzeugTest {
 	public void testPropertyChangeMotor() {
 		Fahrzeug car = new Fahrzeug(0001, Fahrzeug.Brand.VW);
 		assertEquals(false, car.getMotorState());
+		assertEquals(false, car.propertyChange);
 		car.switchMotorOn();
 		assertEquals(true, car.getMotorState());
+		assertEquals(true, car.propertyChange);
 		car.switchMotorOff();
 		assertEquals(false, car.getMotorState());	
 	}
