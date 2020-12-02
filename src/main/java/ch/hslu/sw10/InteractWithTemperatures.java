@@ -9,7 +9,7 @@ import ch.hslu.sw11.WriteByteStreamToFile;
 
 import java.util.Scanner;
 
-public class InteractWithTemperatures  {
+public class InteractWithTemperatures implements MaxMinListener {
 
 	
 	static private final Logger LOG = LogManager.getLogger(InteractWithTemperatures.class);
@@ -19,19 +19,25 @@ public class InteractWithTemperatures  {
 	final private String filename = "C:\\Users\\Dave\\myCloud\\HSLU\\Module\\OOP\\IO-Files\\Temperatures.dat";
 
 	
-	private class HistoryPropertyListener implements MaxMinListener {
+	// Innere Klasse
+	/*private class HistoryPropertyListener implements MaxMinListener {
 		@Override
 		public void extremeValueChanged(TemperaturEvent e) {
 			LOG.debug("extremeValueChanged Methode auf InterActWithTemperatures aufgerufen.");
 			System.out.println(e.toString());
 		}
 	}
+*/	
 	
+	public void extremeValueChanged(TemperaturEvent e) {
+		LOG.debug("extremeValueChanged Methode auf InterActWithTemperatures aufgerufen.");
+		System.out.println(e.toString());
+	}
+		
 	
 	public InteractWithTemperatures () {
 		history = new TemperatureHistory();
-		this.history.addPropertyChangeListener(new InteractWithTemperatures.HistoryPropertyListener() );
-		
+		this.history.addPropertyChangeListener(this::extremeValueChanged);
 	}
 	
 
@@ -55,6 +61,7 @@ public class InteractWithTemperatures  {
 		WriteByteStreamToFile.writeInFile(history.getCount(), history.getArrayList(), filename);
 		ReadByteStreamFromFile.read(filename);
 		LOG.debug("Programm wurde beeendet.");
+		history.printAll();
 	
 	}
 

@@ -20,11 +20,10 @@ public class ReadByteStreamFromFile {
 
 			final int value = dis.readInt();
 			Float f;
-			System.out.println("Anzahl Einträge: " + value);
-			int i =1;
-			while ((f = dis.readFloat()) != null) {
+			System.out.println("Anzahl Einträge: " + value);			
+			for(int i = 0; i < value; i++) {
+				f = dis.readFloat();
 				System.out.println("Temperature " + i + ": " + f + " °C");
-                i++;
 			}
 		} catch (IOException e) {
 			LOG.error("Problem aufgetaucht in read() " + e.getMessage() + e.toString());

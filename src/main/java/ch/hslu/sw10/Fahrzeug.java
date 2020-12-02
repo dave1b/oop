@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 
 
-public class Fahrzeug implements PropertyChangeListener{
+public class Fahrzeug {
 	static private final Logger LOG = LogManager.getLogger(Fahrzeug.class);
 	private int serialNumber;
 	private Brand brand;
@@ -16,6 +16,19 @@ public class Fahrzeug implements PropertyChangeListener{
 	private MultimediaSystem multimediaSystem;
 	private Licht licht;
 	private Lüftung lüftung;
+	public boolean propertyChange = false;
+
+
+	//Innere Klass (MotorPropertyChangeListener) welche Interface implementiert
+	public class MotorPropertyChangeListener implements PropertyChangeListener {
+		@Override
+		public void propertyChange(PropertyChangeEvent event) {
+			LOG.info("Change von innerer Klasse " + event.toString());
+			
+		}
+
+	}
+
 
 
 	public Fahrzeug(int serialNumber, Brand brand) {
@@ -25,15 +38,29 @@ public class Fahrzeug implements PropertyChangeListener{
 		multimediaSystem = new MultimediaSystem();
 		licht = new Licht();
 		lüftung = new Lüftung();
-
-
 		//  Sich selber als Listener registrieren.
-		this.motor.addPropertyChangeListener(this);
-		this.multimediaSystem.addPropertyChangeListener(this);
-		this.licht.addPropertyChangeListener(this);
-		this.lüftung.addPropertyChangeListener(this);
-	}
 
+
+		// Anonyme Innere Klasse
+		this.motor.addPropertyChangeListener(new PropertyChangeListener() {  //-> Typ Interface
+			@Override
+			public void propertyChange(PropertyChangeEvent event) {
+				LOG.info("Change von anonymer innerer Klasse " + event.toString());
+				propertyChange = true;		
+			}			
+		});	
+		// Dasselbe mit Lambdas
+		this.motor.addPropertyChangeListener( (PropertyChangeEvent event) -> {
+			LOG.info("Change von Lamda " + event.toString());
+			propertyChange = true;
+		});		
+		// Lambda mit Methodenreferenz
+		this.motor.addPropertyChangeListener(this::handleMotorEvent);
+		this.motor.addPropertyChangeListener(new MotorPropertyChangeListener());
+		this.multimediaSystem.addPropertyChangeListener(this::handleMultimediaEvent);
+		this.licht.addPropertyChangeListener(this::handleLichtEvent);
+		this.lüftung.addPropertyChangeListener(this::handleLüftungEvent);
+	}
 
 
 	public enum Brand {
@@ -48,10 +75,33 @@ public class Fahrzeug implements PropertyChangeListener{
 	}
 
 
+	private void handleMotorEvent(PropertyChangeEvent event) {
+		LOG.info("Change von Lamda 2 " + event.toString());
+		this.propertyChange = true;
+	}
+	private void handleMultimediaEvent(PropertyChangeEvent event) {
+		LOG.info(event.getSource());
+		LOG.info(event);
+	}
+	private void handleLichtEvent(PropertyChangeEvent event) {
+		LOG.info(event.getSource());
+		LOG.info(event);
+	}
+	private void handleLüftungEvent(PropertyChangeEvent event) {
+		LOG.info(event.getSource());
+		LOG.info(event);
+	}
+
+
+
+
+
+	/*
 	@Override
 	public void propertyChange(final PropertyChangeEvent event) {
 		if(event.getSource() == this.motor) {
 			this.handleMotorEvent("Motor", event);
+			this.propertyChange = true;
 		} else if (event.getSource() == this.multimediaSystem) {
 			LOG.info(event.getSource());
 			LOG.info(event);
@@ -63,12 +113,8 @@ public class Fahrzeug implements PropertyChangeListener{
 			LOG.info(event);
 		}
 	}
+	 */
 
-
-	private void handleMotorEvent(String obj, PropertyChangeEvent event) {
-		LOG.info(event.getSource());
-		LOG.info(event);
-	}
 
 
 	public static void main(String[] args) {
@@ -81,9 +127,9 @@ public class Fahrzeug implements PropertyChangeListener{
 
 	}
 
-	
-	
-	
+
+
+
 	// ------------------ Für Test-Zwecke ---------------------------
 	public int getSerialNumber() {
 		return this.serialNumber;
@@ -91,7 +137,7 @@ public class Fahrzeug implements PropertyChangeListener{
 	public Brand getBrand() {
 		return this.brand;
 	}
-	
+
 	public boolean getMotorState() {
 		return this.motor.isSwitchedOn();
 	}
@@ -102,9 +148,10 @@ public class Fahrzeug implements PropertyChangeListener{
 	public void switchMotorOff() {
 		this.motor.switchOff();
 	}
-	
-	
-	
-	
+
+
+
+
+
 	// --------------------------------------------------------------
 }

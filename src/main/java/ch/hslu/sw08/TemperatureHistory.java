@@ -136,8 +136,13 @@ public class TemperatureHistory extends Temperature implements Comparable<Temper
 	}
 
 
-	public String toString() {
+	public String printInfos() {
 		return "Size: " + (this.getCount()+1) + "\nAverage: " + this.getAverage() + "\nMax: " + this.getMaxItem() + "\nMin: " + this.getMinItem();
+	}
+	
+	
+	public void printAll() {
+		verlauf.forEach((t) -> System.out.println(t));
 	}
 
 

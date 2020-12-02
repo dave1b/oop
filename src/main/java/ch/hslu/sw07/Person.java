@@ -2,7 +2,7 @@ package ch.hslu.sw07;
 
 import java.util.Objects;
 
-public final class Person extends PersonNameComparator implements Comparable<Person>  {
+public class Person extends PersonNameComparator implements Comparable<Person>  {
 
 	final private long ID = 0;
 	private String surname;
@@ -82,8 +82,7 @@ public final class Person extends PersonNameComparator implements Comparable<Per
 	}
 	
 	
-	
-		
+
 	
 	
 	

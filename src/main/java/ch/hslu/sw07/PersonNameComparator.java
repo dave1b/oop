@@ -12,4 +12,12 @@ public class PersonNameComparator implements Comparator<Person>{
 		return compare;
 	}
 	
+	final Comparator<Person> nameComp= (p1, p2) -> p1.getSurname().compareTo(p2.getSurname());
+	final Comparator<Person> surnameComp = (p1,p2) -> p1.getPrename().compareTo(p2.getPrename());
+	
+	
+	
+	
+	
+	
 }
