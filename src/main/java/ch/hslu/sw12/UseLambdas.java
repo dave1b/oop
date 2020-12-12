@@ -26,8 +26,7 @@ public class UseLambdas {
 		System.out.println(biggerThanZero.test(-55));
 		System.out.println(squaring.apply(2));
 		System.out.println(binarPowerCalc.apply(8d));
-		
-		
+	
 	}
 	
 	
