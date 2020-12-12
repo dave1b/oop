@@ -1,5 +1,7 @@
 package ch.hslu.sw07;
 
+import java.util.Comparator;
+
 public class PersonNameComparator implements Comparator<Person>{
 
 	

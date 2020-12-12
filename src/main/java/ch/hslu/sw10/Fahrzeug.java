@@ -56,7 +56,6 @@ public class Fahrzeug {
 		});		
 		// Lambda mit Methodenreferenz
 		this.motor.addPropertyChangeListener(this::handleMotorEvent);
-		this.motor.addPropertyChangeListener(new MotorPropertyChangeListener());
 		this.multimediaSystem.addPropertyChangeListener(this::handleMultimediaEvent);
 		this.licht.addPropertyChangeListener(this::handleLichtEvent);
 		this.lüftung.addPropertyChangeListener(this::handleLüftungEvent);
