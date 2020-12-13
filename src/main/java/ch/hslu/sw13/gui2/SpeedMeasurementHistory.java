@@ -1,8 +1,7 @@
 package ch.hslu.sw13.gui2;
 
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
@@ -10,13 +9,12 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import ch.hslu.sw08.Temperature;
-import ch.hslu.sw12.Temperature2;
 
 
 public class SpeedMeasurementHistory extends SpeedMeasurement {
 
 
+	@SuppressWarnings("unused")
 	private static final Logger LOG = LogManager.getLogger(SpeedMeasurementHistory.class);
 	private List<SpeedMeasurement> history = new ArrayList<SpeedMeasurement>();
 

@@ -600,7 +600,7 @@
                     <release>11</release>
                     <jlinkImageName>runtime</jlinkImageName>
                     <launcher>guisample</launcher>
-                    <mainClass>${jar.start.class}</mainClass>
+                    <mainClass>ch.hslu.sw13.gui2.SpeedMeasurementsGUI</mainClass>
                 </configuration>
             </plugin>
         </plugins>

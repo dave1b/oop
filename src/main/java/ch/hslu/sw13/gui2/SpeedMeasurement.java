@@ -1,6 +1,5 @@
 package ch.hslu.sw13.gui2;
 
-import java.time.LocalDateTime;
 
 public class SpeedMeasurement implements Comparable<SpeedMeasurement>{
 
@@ -71,7 +70,7 @@ public class SpeedMeasurement implements Comparable<SpeedMeasurement>{
 	}
 
 	public String toString() {
-		return "Date: " + timestamp + "\nPing: " + latency + "ms \nDownload: " + download + " MBit/s \nupload: " + upload + " MBit/s \nConnection type: " + connectionType + "\nServer Location: " + serverLocation;
+		return "Date: " + timestamp + "\nPing: " + latency + "ms \nDownload: " + download + " MBit/s \nUpload: " + upload + " MBit/s \nConnection type: " + connectionType + "\nServer Location: " + serverLocation;
 	}
 	
 	
