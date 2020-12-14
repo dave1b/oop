@@ -97,7 +97,8 @@ public class ReadSpeedMeasurements implements  ActionListener{
 				}
 				this.view.setTextAreaMax(history.getMaxItem());
 				this.view.setTextAreaMin(history.getMinItem());
-				this.view.setTextAreaAverage(history.getAverage());
+				this.view.setTextAreaAverage(history.getAverage(), history.getCount());
+				
 				
 				System.out.println("Fastest Downloadspeed\n" + history.getMaxItem());
 				System.out.println("");
