@@ -17,10 +17,7 @@ public class Lead extends Element{
 	}
 
 	
-	/**
-	 * 
-	 * @param The temperature in which you wanna check the aggregate state of the element.
-	 */
+
 	public Lead (float temp) {
 		super(CriticalTemps.MELTINGPOINT.getValue(), CriticalTemps.BOILINGPOINT.getValue(), temp);
 	}

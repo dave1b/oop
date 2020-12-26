@@ -4,9 +4,9 @@ import java.util.Objects;
 
 /**
  * Abstract class for different Objects. By entering a temperature the objects return their aggregate State at the given temperature.
- * 1 -> liquid / flüssig
- * 2 -> solid / fest
- * 3 -> gaseous / gasförmig
+ * 1  liquid / flüssig
+ * 2  solid / fest
+ * 3  gaseous / gasförmig
  * 
  * @author Dave
  * @version 1.1 (2020.10.14)
@@ -49,7 +49,7 @@ public abstract class Element implements Comparable<Element> {
 
 	/**
 	 * Method that gives back the aggregate state of the element at the temperature given as the parameter.
-	 * @param the temperature to test the aggregate state of the element.
+	 * 
 	 * 
 	 */
 	public int getState() {

@@ -56,7 +56,7 @@ public final class Point {
 	/**
 	 * Konstruktor für die Kopie eines Punktes.
 	 * 
-	 * @param ein Objekt des Typs Point
+	 * @param ein Objekt des Typs Point.
 	 * 
 	 */
 	public Point(Point point) {

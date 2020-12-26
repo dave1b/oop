@@ -130,10 +130,7 @@ public class PersonTest {
 
 	
 	
-	@Test
-	void testEqualsContract() {
-		EqualsVerifier.forClass(Person.class).suppress(Warning.NONFINAL_FIELDS).withIgnoredFields("ID").verify();
-	}
+	
 
 	@Test
 	@BeforeAll

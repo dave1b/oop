@@ -75,7 +75,7 @@
         <argLine>-Xms512m -Xmx1g -Xss10m</argLine>
 
         <!-- Hier ggf. andere Startklasse anpassen! -->
-        <jar.start.class>ch.hslu.sw13gui2.SpeedMeasurementsGUI</jar.start.class>
+        <jar.start.class>ch.hslu.sw13gui2.JavaFXGUI</jar.start.class>
 
         <scm.group.name>oop</scm.group.name>
         <scm.developer.uid>zbgisler</scm.developer.uid>
@@ -600,7 +600,7 @@
                     <release>11</release>
                     <jlinkImageName>runtime</jlinkImageName>
                     <launcher>guisample</launcher>
-                    <mainClass>ch.hslu.sw13.gui2.SpeedMeasurementsGUI</mainClass>
+                    <mainClass>ch.hslu.sw13.gui2.JavaFXGUI</mainClass>
                 </configuration>
             </plugin>
         </plugins>

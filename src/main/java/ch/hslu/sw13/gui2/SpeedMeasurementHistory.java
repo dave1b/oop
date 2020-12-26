@@ -34,7 +34,6 @@ public class SpeedMeasurementHistory extends SpeedMeasurement {
 	}
 
 	public int getCount() {
-		//		System.out.println(history.size());
 		return history.size();
 	}
 	public SpeedMeasurement getWithIndex(int index) {
@@ -51,7 +50,8 @@ public class SpeedMeasurementHistory extends SpeedMeasurement {
 			return s;
 		}
 		return new SpeedMeasurement();
-	}		
+	}	
+	// Alternativer Lösungsweg
 	//		if(history.size() > 0) {
 	//			return (Collections.max(history, Comparator.comparing(m -> m.getDownload())));
 	//		}

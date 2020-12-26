@@ -1,15 +1,11 @@
 package ch.hslu.sw13.gui2;
 
-
 public class ReadSpeedApplication {
 
-	
-	
-	public static void main (String[] args) {
+	public static void main(String[] args) {
 		@SuppressWarnings("unused")
-		ReadSpeedMeasurements reader = new ReadSpeedMeasurements();
-		
+		ReadSpeedController reader = new ReadSpeedController();
+
 	}
-		
-	
+
 }

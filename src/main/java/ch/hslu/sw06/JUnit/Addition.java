@@ -13,8 +13,8 @@ public interface Addition {
 
 	/**
 	 * Method to add two variables.
-	 * @param first int
-	 * @param second int
+	 * @param first int.
+	 * @param second int.
 	 * @return the sum of both ints.
 	 */
 	long addition(int x, int y);
